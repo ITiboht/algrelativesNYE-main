@@ -10,7 +10,7 @@ on:
 env:
   DOCKER_REGISTRY: ghcr.io
   DOCKER_IMAGE_NAME: ${{ github.repository }}
-  HEROKU_APP_NAME: 'algrelatives'
+  HEROKU_APP_NAME: 'relatives-nye'
 
 jobs:
   build:
@@ -75,8 +75,8 @@ jobs:
         run: heroku container:login
       - name: Get image from packages, tag and push to Heroku
         run: |
-          docker pull ghcr.io/tamas516/algrelatives:${{ env.ARTIFACT_VERSION }}
-          docker tag ghcr.io/tamas516/algrelatives:${{ env.ARTIFACT_VERSION }} registry.heroku.com/${{ env.HEROKU_APP_NAME }}/web
+          docker pull ghcr.io/ITiboht/algrelativesNYE-main:${{ env.ARTIFACT_VERSION }}
+          docker tag ghcr.io/ITiboht/algrelativesNYE-main:${{ env.ARTIFACT_VERSION }} registry.heroku.com/${{ env.HEROKU_APP_NAME }}/web
           docker push registry.heroku.com/${{ env.HEROKU_APP_NAME }}/web
         env:
           ARTIFACT_VERSION: ${{ needs.build.outputs.artifactVersion }}
